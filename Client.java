@@ -34,41 +34,72 @@ public class Client extends JFrame {
         setVisible(true);
 
         try {
+            // Connect to the server
             Socket socket = new Socket("localhost", 8000);
             fromServer = new DataInputStream(socket.getInputStream());
             toServer = new DataOutputStream(socket.getOutputStream());
 
-            // Receive the question and options from the server
-            String questionData = fromServer.readUTF();
-            String[] parts = questionData.split(";");
-            String question = parts[0];
-            String[] options = parts[1].split(",");
+            // Create a thread to listen for questions from the server
+            new Thread(() -> {
+                try {
+                    while (true) {
+                        // Receive question data
+                        String questionData = fromServer.readUTF();
 
-            jta.append(question + "\n");
-            for (int i = 0; i < options.length; i++) {
-                jta.append((i + 1) + ": " + options[i] + "\n");
-            }
+                        // Check if it's the end of the quiz
+                        if (questionData.equals("Quiz Complete! Thank you for participating.")) {
+                            jta.append("\n" + questionData + "\n");
+                            break; // Exit the loop
+                        }
+
+                        // Split the question and options
+                        String[] parts = questionData.split(";");
+                        if (parts.length < 2) {
+                            jta.append("" + questionData + "\n");
+                            continue; // Skip to the next iteration
+                        }
+
+                        String question = parts[0];
+                        String[] options = parts[1].split(",");
+
+                        // Display the question
+                        jta.append("\n" + question + "\n");
+
+                        // Display each option with a number (1-4)
+                        for (int i = 0; i < options.length; i++) {
+                            jta.append((i + 1) + ": " + options[i] + "\n");
+                        }
+                    }
+                } catch (IOException ex) {
+                    jta.append("Error receiving data from server: " + ex.getMessage() + "\n");
+                }
+            }).start();
         } catch (IOException ex) {
-            jta.append(ex.toString() + '\n');
+            jta.append("Error connecting to server: " + ex.getMessage() + '\n');
         }
     }
 
     private class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             try {
-                // Send the client's choice to the server
-                int choice = Integer.parseInt(jtf.getText().trim());
-                toServer.writeInt(choice);
+                String input = jtf.getText().trim();
+                if (!input.matches("[1-4]")) {
+                    jta.append("Invalid input. Please enter a number between 1 and 4.\n");
+                    return;
+                }
+
+                int choice = Integer.parseInt(input);
+                toServer.writeInt(choice); // Send answer to server
                 toServer.flush();
 
-                // Receive the response from the server
+                // Receive and display the server's response
                 String response = fromServer.readUTF();
                 jta.append("Server response: " + response + "\n");
 
-                // Disable further input after one question
-                jtf.setEditable(false);
+                // Clear the text field for the next input
+                jtf.setText("");
             } catch (IOException ex) {
-                jta.append("Error: " + ex.getMessage() + "\n");
+                jta.append("Error sending data to server: " + ex.getMessage() + "\n");
             }
         }
     }
