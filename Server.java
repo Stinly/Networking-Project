@@ -73,7 +73,8 @@ public class Server extends JFrame {
                 List<Question> questions = Arrays.asList(
                     new Question("What is the capital of France?", new String[]{"\n1. Paris\n", "2. Berlin\n", "3. Madrid\n", "4. Rome\n"}, 1),
                     new Question("What is 62 + 93?", new String[]{"\n1. 83\n", "2. 152\n", "3. 140\n", "4. 158\n"}, 2),
-                    new Question("At Oakland University, What is The Computer Networks Course'?", new String[]{"\n1. CSI 2470\n", "2. CSI 2300\n", "3.CSI 3370\n", "4.CSI 1000\n"}, 1)
+                    new Question("At Oakland University, What is The Computer Networks Course'?", new String[]{"\n1. CSI 2470\n", "2. CSI 2300\n", "3.CSI 3370\n", "4.CSI 1000\n"}, 1),
+                    new Question("What Internet Protocol is TCP apart of?", new String[]{"\n1. Application Protocol", "\n2. Network Protocol", "\n3. Transport Protocol", "\n4. Link Protocol\n"}, 3)
 
                 );
     
