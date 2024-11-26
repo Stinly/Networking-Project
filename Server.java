@@ -76,6 +76,8 @@ public class Server extends JFrame {
                     new Question("At Oakland University, What is The Computer Networks Course'?", new String[]{"\n1. CSI 2470\n", "2. CSI 2300\n", "3.CSI 3370\n", "4.CSI 1000\n"}, 1),
                     new Question("What Internet Protocol is TCP apart of?", new String[]{"\n1. Application Protocol", "\n2. Network Protocol", "\n3. Transport Protocol", "\n4. Link Protocol\n"}, 3),
                     new Question("What is the chemical symbol for gold?", new String[]{"\n1. Ag", "\n2. Gd", "\n3. Au", "\n4. G"}, 3),
+                    new Question("How many megabytes are in a gigabyte?", new String[]{"\n1. 100\n", "2. 1000\n", "3. 10\n", "4. 1\n"}, 2),
+                    new Question("What city is Oakland University located in?", new String[]{"\n1. Macomb, MI\n", "2. Detroit, MI\n", "3. Lansing, MI\n", "4. Auburn Hills, MI\n"}, 4),
                     new Question("What does IP address stand for?", new String[]{"\n1. Intellectual Property", "\n2. Internet Port", "\n3. Internet Protocol", "\n4. Internet Procedure"}, 3),
                     new Question("What planet is known as the Red Planet and is the fourth furthest planet from the sun?", new String[]{"\n1. Venus", "\n2. Mars", "\n3. Jupiter", "\n4. Saturn"}, 2)
                 );
