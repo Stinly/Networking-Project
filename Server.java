@@ -79,7 +79,8 @@ public class Server extends JFrame {
                     new Question("How many megabytes are in a gigabyte?", new String[]{"\n1. 100\n", "2. 1000\n", "3. 10\n", "4. 1\n"}, 2),
                     new Question("What city is Oakland University located in?", new String[]{"\n1. Macomb, MI\n", "2. Detroit, MI\n", "3. Lansing, MI\n", "4. Auburn Hills, MI\n"}, 4),
                     new Question("What does IP address stand for?", new String[]{"\n1. Intellectual Property", "\n2. Internet Port", "\n3. Internet Protocol", "\n4. Internet Procedure"}, 3),
-                    new Question("What planet is known as the Red Planet and is the fourth furthest planet from the sun?", new String[]{"\n1. Venus", "\n2. Mars", "\n3. Jupiter", "\n4. Saturn"}, 2)
+                    new Question("What planet is known as the Red Planet and is the fourth furthest planet from the sun?", new String[]{"\n1. Venus", "\n2. Mars", "\n3. Jupiter", "\n4. Saturn"}, 2),
+                    new Question("What is the purpose of a subnet mask?", new String[]{"\n1. To identify the network portion of an IP address", "\n2. To encrypt data", "\n3. To connect different networks ", "\n4. To manage network traffic"}, 1)
                 );
     
                 int correctAnswers = 0;
