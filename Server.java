@@ -92,7 +92,7 @@ public class Server extends JFrame {
                     outputToClient.flush(); // Ensure data is sent immediately
     
                     // Log the sent question
-                    jta.append("Sent Question: " + question.getQuestionText() + "\n");
+                    jta.append("Sent Question " + (i + 1) + ": " + question.getQuestionText() + "\n");
     
                     // Wait for the client's answer
                     int clientAnswer = inputFromClient.readInt();
